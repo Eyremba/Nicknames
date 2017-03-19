@@ -1,0 +1,35 @@
+name: CodeStuff
+version: 1.0
+main: io.github.NateTheCodeWizard.CodeStuff.CodeStuff
+commands:
+    nick:
+        description: The nicknaming command
+        usage: /nick <set, get, clear> [<text/player>]
+permissions:
+    nicknames.*:
+        description: Access to all nickname commands.
+        default: false
+        children:
+            nicknames.admin: true
+    nicknames.admin:
+        default: false
+        children:
+            nicknames.clear.other: true
+            nicknames.set.other: true
+            nicknames.user: true
+    nicknames.user:
+        description: User perms
+        default: false
+        children:
+            nicknames.get: true
+            nicknames.set: true
+            nicknames.clear: true
+    nicknames.get:
+        description: Get another's identity.
+        default: false
+    nicknames.set:
+        description: Set your nickname.
+        default: false
+    nicknames.clear:
+        description: Clear your nickname.
+        default: false
